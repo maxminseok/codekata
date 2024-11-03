@@ -9,12 +9,11 @@ func solution(_ n:Int) -> Int
     for char in stringNumbers {
         charNumber.append(char)
     }
-    
     for i in charNumber {
         if let num = Int(String(i)) {
             sum += num
         }
     }
-    
+  
     return sum
 }
