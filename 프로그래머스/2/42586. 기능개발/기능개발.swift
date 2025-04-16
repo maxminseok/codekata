@@ -5,19 +5,18 @@ func solution(_ progresses:[Int], _ speeds:[Int]) -> [Int] {
         Int(ceil((100 - Double($0)) / Double($1)))
     }
     var distribution: [Int] = []
-    var currentMax = completeDate[0]
-    var count = 0
-
-    for date in completeDate {
-        if currentMax < date{
-            distribution.append(count)
-            currentMax = date
-            count = 1
-        } else {
+    
+    while !completeDate.isEmpty {
+        let currentMax = completeDate.removeFirst()
+        var count = 1
+        
+        while let next = completeDate.first, next <= currentMax {
+            completeDate.removeFirst()
             count += 1
         }
+        
+        distribution.append(count)
     }
-    distribution.append(count)
 
     return distribution
 }
